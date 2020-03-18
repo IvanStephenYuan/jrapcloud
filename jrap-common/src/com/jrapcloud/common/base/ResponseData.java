@@ -9,6 +9,7 @@ public class ResponseData {
     private int code = 200;
     private String message = "";
     private Object data;
+    private Boolean status;
 
     public static ResponseData ok(Object data) {
         return new ResponseData(data);
@@ -72,5 +73,13 @@ public class ResponseData {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public Boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }
