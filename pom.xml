@@ -18,6 +18,7 @@
     <modules>
         <module>jrap-common</module>
         <module>jrap-eureka</module>
+        <module>jrap-core</module>
     </modules>
 
     <properties>
@@ -44,6 +45,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.0.5</version>
         </dependency>
     </dependencies>
 
