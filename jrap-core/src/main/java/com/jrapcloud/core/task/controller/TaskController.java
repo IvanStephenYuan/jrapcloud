@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 /**
  * @author IvanStephen
  * @project jrapcloud
@@ -16,7 +19,15 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping("/getlog")
-    public void getTaskLog(){
-        taskService.saveLog();
+    public String getTaskLog(){
+        Future<String> result = taskService.saveLog();
+        try {
+            System.out.println("Controller:" + result.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return "getLog=>hello";
     }
 }

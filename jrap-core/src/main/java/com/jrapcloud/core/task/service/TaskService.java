@@ -1,7 +1,10 @@
 package com.jrapcloud.core.task.service;
 
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.Future;
 
 /**
  * @author IvanStephen
@@ -10,8 +13,10 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class TaskService {
-    @Async
-    public void saveLog(){
-        System.out.println(Thread.currentThread().getName());
+    @Async("taskExecutor")
+    public Future<String> saveLog(){
+        String threadName = Thread.currentThread().getName();
+        System.out.println("Service:" + threadName);
+        return new AsyncResult<>(threadName);
     }
 }
