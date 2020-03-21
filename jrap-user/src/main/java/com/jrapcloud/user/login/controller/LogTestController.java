@@ -17,6 +17,7 @@ public class LogTestController {
 
     @GetMapping("/callLog")
     public String callTestLog(){
-        return restTemplate.getForObject("http://localhost:8081/getlog", String.class);
+        System.out.println("use=>eureka-client-core-service:getlog");
+        return restTemplate.getForObject("http://eureka-client-core-service/getlog", String.class);
     }
 }
